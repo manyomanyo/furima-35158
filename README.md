@@ -11,7 +11,7 @@
 | user_name_first       | string | null: false               |
 | user_name_kana_family | string | null: false               |
 | user_name_kana_first  | string | null: false               |
-| birthday              | string | null: false               |
+| birthday              | date   | null: false               |
 
 ### Association
 
@@ -20,18 +20,17 @@
 
 ## productsテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| name             | string     | null: false                    |
-| text             | string     | null: false                    |
-| description      | string     | null: false                    |
-| price            | string     | null: false                    |
-| state_id         | integer    | null: false                    |
-| category_id      | integer    | null: false                    |
-| delivery_fee_id  | integer    | null: false                    |
-| delivery_days_id | integer    | null: false                    |
-| user_eria_id     | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| description     | text       | null: false                    |
+| price           | integer    | null: false                    |
+| state_id        | integer    | null: false                    |
+| category_id     | integer    | null: false                    |
+| delivery_fee_id | integer    | null: false                    |
+| delivery_day_id | integer    | null: false                    |
+| user_area_id    | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -50,19 +49,20 @@
 
 - belongs_to :user
 - belongs_to :product
-- has_one    :purchase
+- has_one    :address
 
 ## addressesテーブル
 
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| postal_number | string  | null: false |
-| user_eria_id   | integer | null: false |
-| city          | string  | null: false |
-| block         | string  | null: false |
-| building      | string  |             |
-| phone_number  | string  | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_number | string     | null: false                    |
+| user_area_id  | integer    | null: false                    |
+| city          | string     | null: false                    |
+| block         | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
