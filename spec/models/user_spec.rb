@@ -78,18 +78,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
-    end
-  end
-  describe '新規登録/本人情報確認' do
-    before do
-      @user = FactoryBot.build(:user)
-    end
-    context '内容に問題がない場合' do
-      it '本人の名前の苗字名前、フリガナの苗字名前、生年月日が存在すると登録できる' do
-        expect(@user).to be_valid
-      end
-    end
-    context '内容に問題がある場合' do
       it 'ユーザー本名は、名字と名前がそれぞれ必須であること' do
         @user.user_name_family = ''
         @user.valid?
