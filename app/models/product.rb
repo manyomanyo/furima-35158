@@ -6,11 +6,13 @@ class Product < ApplicationRecord
   belongs_to :item_state
   belongs_to :user_area
 
-  validates :category_id,     numericality: { other_than: 1 }
-  validates :item_state_id,   numericality: { other_than: 1 }
-  validates :delivery_fee_id, numericality: { other_than: 1 }
-  validates :delivery_day_id, numericality: { other_than: 1 }
-  validates :user_area_id,    numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :item_state_id
+    validates :delivery_fee_id
+    validates :delivery_day_id
+    validates :user_area_id
+  end
 
   with_options presence: true do
     validates :name, length:{maximum: 40}
