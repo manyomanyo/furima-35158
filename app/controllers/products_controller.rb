@@ -42,11 +42,13 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:image, :name, :description, :price, :item_state_id, :category_id, :delivery_fee_id, :delivery_day_id, :user_area_id).merge(user_id: current_user.id)
+    params.require(:product).permit(
+      :image, :name, :description, :price, :item_state_id, :category_id, :delivery_fee_id, :delivery_day_id, :user_area_id
+    ).merge(user_id: current_user.id)
   end
 
   def move_to_index
-    unless (current_user.id == @product.user_id) && @product.purchase.blank?
+    unless current_user.id == @product.user_id
       redirect_to action: :index
     end
   end
