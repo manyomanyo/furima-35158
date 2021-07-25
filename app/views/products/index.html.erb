@@ -134,11 +134,11 @@
             <div class='item-img-content'>
               <%= image_tag product.image, class: "item-img" %>
 
-              <%# 商品購入機能実装時に実装(商品購入がある場合soldout) <% if  %> 
+              <% if product.purchase.present? %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
-              <%# 商品購入機能実装時に実装 <% end %>
+              <% end %>
 
             </div>
             <div class='item-info'>
